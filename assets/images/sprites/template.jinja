@@ -1,0 +1,9 @@
+/* glue: {{ version }} hash: {{ hash }} */
+{% for image in images %}
+	@{{ image.label }}: '{{ image.label }}';
+	@{{ image.label }}-fname: '{{ image.filename }}';
+	@{{ image.label }}-x: {{ image.x }}px;
+	@{{ image.label }}-y: {{ image.y }}px;
+	@{{ image.label }}-width: {{ image.width }}px;
+	@{{ image.label }}-height: {{ image.height }}px;
+{% endfor %}

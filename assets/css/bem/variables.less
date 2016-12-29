@@ -1,0 +1,32 @@
+@color-green: #74b929  ;
+@color-gray-dark:#464646;
+.fonts-native(@size: 14px, @weight: normal,@font:"Raleway"){
+	font-family: @font, 'Arial';
+	font-weight: @weight;
+	font-size: @size;
+}
+
+.container {
+  .container-fixed();
+
+  @media (min-width: @screen-sm-min) {
+    width: 100%;
+  }
+  @media (min-width: @screen-md-min) {
+    width: @container-md;
+  }
+  @media (min-width: @screen-lg-min) {
+    width: @container-lg;
+  }
+}
+.clearfix{
+	clear:both;
+	float:none;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}

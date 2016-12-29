@@ -1,0 +1,203 @@
+///* Animations and keyframes
+//-------------------------------------*/
+
+.animation-simple(@str) {
+  -webkit-animation: @str;
+  -moz-animation: @str;
+  -ms-animation: @str;
+  -o-animation: @str;
+  animation: @str;
+}
+
+///* Margin mixin
+//-------------------------------------*/
+.marg-topNbottom (@arg) {
+  margin-top: @arg;
+  margin-bottom: @arg;
+}
+
+.marg-leftNright (@arg) {
+  margin-left: @arg;
+  margin-right: @arg;
+}
+
+///* Padding mixin
+//-------------------------------------*/
+.padd-topNbottom (@arg) {
+  padding-top: @arg;
+  padding-bottom: @arg;
+}
+
+.padd-leftNright (@arg) {
+  padding-left: @arg;
+  padding-right: @arg;
+}
+
+///* Border mixin
+//-------------------------------------*/
+.border-topNbottom (...) {
+  border-top: @arguments;
+  border-bottom: @arguments;
+}
+
+.border-leftNright (...) {
+  border-left: @arguments;
+  border-right: @arguments;
+}
+
+///* Absolute and Fixed Positioned
+//-------------------------------------*/
+.abs-pos (@top: auto; @right: auto; @bottom: auto; @left: auto) {
+  & when not (@top = auto) {
+    top: @top;
+  }
+  & when not (@right = auto) {
+    right: @right;
+  }
+  & when not (@bottom = auto) {
+    bottom: @bottom;
+  }
+  & when not (@left = auto) {
+    left: @left;
+  }
+  position: absolute;
+}
+
+.fix-pos (@top: auto; @right: auto; @bottom: auto; @left: auto) {
+  & when (ispixel(@top)) {
+    top: @top;
+  }
+  & when (ispixel(@right)) {
+    right: @right;
+  }
+  & when (ispixel(@bottom)) {
+    bottom: @bottom;
+  }
+  & when (ispixel(@left)) {
+    left: @left;
+  }
+  position: fixed;
+}
+
+///* Responsive Breakpoints
+//-------------------------------------*/
+.breakpoint(@min: 0; @max: 0; @rules) {
+
+  // breakpoint by bootstrap classes
+  & when (isstring(@min)) {
+
+    & when (@min = 'visible-xs') {
+      //  SCREEN < 767px
+      @media (max-width: @screen-xs-max) { @rules();
+      }
+    }
+    & when (@min = 'visible-sm') {
+      // 768px < SCREEN > 991px
+      @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { @rules();
+      }
+    }
+    & when (@min = 'visible-md') {
+      // 992px < SCREEN > 1199px
+      @media (min-width: @screen-md-min) and (max-width: @screen-md-max) { @rules();
+      }
+    }
+    & when (@min = 'visible-lg') {
+      //  SCREEN > 1200px
+      @media (min-width: @screen-lg-min) { @rules();
+      }
+    }
+
+  }
+
+  // breakpoints by screen values
+  & when not (isstring(@min)) {
+
+    & when (@min > 0) and (@max > 0) {
+      @media (min-width: @min) and (max-width: @max) {
+        @rules();
+      }
+    }
+
+    & when (@min > 0) and (@max = 0) {
+      @media (min-width: @min) {
+        @rules();
+      }
+    }
+
+    & when (@min = 0) and (@max > 0) {
+      @media (max-width: @max) {
+        @rules();
+      }
+    }
+
+  }
+}
+
+///* Transform
+//-------------------------------------*/
+.transform(...) {
+  -webkit-transform: @arguments;
+  -ms-transform: @arguments; // IE9 only
+  -o-transform: @arguments;
+  transform: @arguments;
+}
+
+.backface-visibility(...) {
+  -webkit-backface-visibility: @arguments;
+  -moz-backface-visibility: @arguments;
+  -ms-backface-visibility: @arguments;
+  backface-visibility: @arguments;
+}
+
+///// Image responsive inline
+.img-responsive-inline{
+  max-width: 100%;
+  display: inline-block;
+  height: auto;
+}
+.pico{
+	background-image: url(/assets/images/pico.png);
+	background-repeat: no-repeat;
+}
+.sprite(@sprite){
+	background-position: ~"@{@{sprite}-x}" ~"@{@{sprite}-y}";	
+	width: ~"@{@{sprite}-width}";
+	height: ~"@{@{sprite}-height}";
+}
+
+
+
+/// arrow
+.right-border-arrow(@width: 10px, @height: 12px, @color: red, @border-color: green, @bg-color: white) {
+  @h: @height / 2;
+  @w: @width;
+  @h2: @h - 1;
+  @w2: @width - 1;
+
+  &:after,
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 100%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+
+  &:after {
+    top: 1px;
+    border-color: transparent transparent transparent @color;
+    border-width: @h2 0 @h2 @w2;
+    z-index: 11;
+  }
+
+  &:before {
+    right: -@width;
+    top: 0px;
+    border-width: @h 0 @h @width;
+    border-color: transparent transparent transparent @border-color;
+    background: @bg-color;
+    z-index: 10;
+  }
+}
