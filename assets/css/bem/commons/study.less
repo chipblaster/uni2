@@ -1,7 +1,10 @@
 .study {
-    margin-top: 50px;
+    margin: 10px 0;
+    .bord--both();
     &__wrapper {
-        min-height: 504px;
+       min-height: 565px;
+       background-color: white;        
+        
     }
     &__head {
         margin-top: 113.7px;
@@ -29,8 +32,10 @@
     }
     &__buttons {
         margin-top: 66px;
+        margin-bottom: 109px;
     }
     &__btn {
+        .bord--both();
         display: inline-block;
         width: 174.4px;
         height: 48px;
@@ -45,13 +50,16 @@
         background-color: #1e1e1e;
         text-decoration: none;
         &--second {
+            .bord--both();
             background-color: #26ba99;
             margin-left: 19.4px;
         }
     }
     
     &__image {
+        border-bottom-right-radius: 15px;
+         min-height: 565px;    
         background-size: cover;
         background-repeat: no-repeat;
     }
-}
+}   

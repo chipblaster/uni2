@@ -23,7 +23,6 @@ gulp.task('less', function() {
 
 // Rerun the task when a file changes 
 gulp.task('watch', ['less'], function() {
-    // gulp.watch(paths.images, ['images']);
     gulp.watch('./css/bem/commons/*.less', ['less']);
 });
 
