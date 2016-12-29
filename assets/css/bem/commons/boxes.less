@@ -1,20 +1,26 @@
 .boxes {
+    
+    .col-md-12{
+        .mb10();
+    }
     &__wrapper {
         
     }
     &__item {
-        width: 24.5%;
+        width: calc(~"100% - 10px");
+        margin-right:10px;
         height: 169.4px;
         border-top-left-radius: 15px;
         border-bottom-right-radius: 15px;
         background-color: #26ba99;
         overflow: hidden;
-    }
-    &__items {
-        padding: 10px 10px 10px 10px;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        &:hover{
+            background-color: #1e1e1e;
+            .boxes_btn{
+                background-color: #26ba99;
+                color: #fff;
+            }
+        }
     }
     &__text {
         margin-top: 110px;
@@ -36,7 +42,7 @@
         display: block;
         width: 33.6px;
         height: 31.4px;
-        color: white;
+        color: #fff!important;
         background-color: #1e1e1e;
         float: right;
         text-align: center;
